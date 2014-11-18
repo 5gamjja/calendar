@@ -50,15 +50,9 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
+		//TODO model에 calendarUsers, events, eventAttentees 배열 객체 추가 
+		
 		this.add();
-		///////////////////////////////
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		////////////////////////////
 		
 		List<CalendarUser> users = calendarService.getAllUsers();
 		List<Event> events = calendarService.getAllEvents();
@@ -67,9 +61,6 @@ public class HomeController {
 		model.addAttribute("users", users);
 		model.addAttribute("events", events);
 		model.addAttribute("attendees", attendees);
-		
-		//TODO model에 calendarUsers, events, eventAttentees 배열 객체 추가 
-		
 		
 		return "home";
 	}
@@ -120,11 +111,8 @@ public class HomeController {
 		for (int i = 0; i < numInitialNumEvents; i++) {
 			eventAttentees[i] = new EventAttendee();
 			eventAttentees[i].setEvent(events[i]);
-			eventAttentees[i].setAttendee(calendarUsers[3 * i ]);
-			eventAttentees[i].setAttendee(calendarUsers[3 * i + 1]);
-			eventAttentees[i].setAttendee(calendarUsers[3 * i + 2]);
+			eventAttentees[i].setAttendee(calendarUsers[i]);
 			eventAttentees[i].setId(calendarService.createEventAttendee(eventAttentees[i]));
 		}
 	}
-	
 }

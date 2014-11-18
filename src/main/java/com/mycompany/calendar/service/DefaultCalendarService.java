@@ -156,6 +156,6 @@ public class DefaultCalendarService implements CalendarService {
 
 	@Override
 	public List<EventAttendee> getAllAttendee() {
-		return null;
+		return eventAttendeeDao.findAllAttendee();
 	}
 }

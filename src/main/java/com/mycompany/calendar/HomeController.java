@@ -74,10 +74,6 @@ public class HomeController {
 		events = new Event[numInitialNumEvents];
 		eventAttentees = new EventAttendee[numInitialNumEvents];
 		
-		this.calendarService.deleteAllUsers();
-		this.calendarService.deleteAllEvents();
-		this.calendarService.deleteAllEventAttendees();
-		
 		for (int i = 0; i < numInitialNumUsers; i++) {
 			calendarUsers[i] = new CalendarUser();
 			calendarUsers[i].setEmail("user" + i + "@example.com");

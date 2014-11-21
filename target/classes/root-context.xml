@@ -24,4 +24,5 @@
 		<property name="username" value="spring" />
 		<property name="password" value="book" />
 	</bean>
+	
 </beans>
